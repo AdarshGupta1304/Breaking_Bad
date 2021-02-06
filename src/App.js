@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Episodes from './components/BreakingBad/Episodes';
+import Characters from './components/BreakingBad/Characters';
+import Signup from './components/Auth/Signup';
+import Login from './components/Auth/login';
+import Error from './components/Error';
+import Home from './components/Home';
+import MenuBar from './components/MenuBar';
+
+import { Switch, Route } from 'react-router-dom';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MenuBar />
+      <Switch>
+        <Route path="/" component={Login} exact />
+        <Route path="/signup" component={Signup} exact />
+        <Route path="/login" component={Login} exact />
+        <Route path="/episodes" component={Episodes} exact />
+        <Route path="/characters" component={Characters} exact />
+        <Route component={Error} />
+      </Switch>  
     </div>
   );
 }
